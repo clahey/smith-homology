@@ -1,5 +1,5 @@
 <ng-container [ngSwitch]="dimension">
 	<div *ngSwitchCase="0">* {{name}}</div>
 	<div *ngSwitchCase="1">{{vertices[0]}} ----{{name}}---> {{vertices[1]}}</div>
-  <app-two-simplex *ngSwitchCase="2"></app-two-simplex>
+  <app-two-simplex *ngSwitchCase="2" [complex]="complex" [index]="index"></app-two-simplex>
 </ng-container>

@@ -1,22 +1,23 @@
-import { Component, OnChanges, Input } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { DeltaComplex } from "../../delta-complex";
 
 @Component({
-  selector: 'app-two-simplex',
-  templateUrl: './two-simplex.component.html',
-  styleUrls: ['./two-simplex.component.css']
+  selector: "app-two-simplex",
+  templateUrl: "./two-simplex.component.html",
+  styleUrls: ["./two-simplex.component.css"]
 })
-export class TwoSimplexComponent implements OnChanges {
+export class TwoSimplexComponent implements OnInit {
   @Input() complex: DeltaComplex;
-  @Input() dimension: number;
   @Input() index: number;
   name: string;
   faces: string[];
   vertices: string[];
 
+  readonly dimension = 2;
+
   constructor() {}
 
-  ngOnChanges() {
+  ngOnInit() {
     this.name =
       this.complex.getSimplexName(this.dimension, this.index) ||
       `(${this.index})`;
