@@ -1,0 +1,14 @@
+<!-- <app-matrix [matrix]="d0"></app-matrix>
+<app-matrix [matrix]="d1"></app-matrix>
+<app-matrix [matrix]="d2"></app-matrix>
+<app-matrix [matrix]="d3"></app-matrix> -->
+{{indices|json}}
+<div *ngFor="let dim of range(4)">
+<div *ngFor="let i of range(complex.simplexCount(dim))">
+  <app-simplex [complex]="complex" [dimension]="dim" [index]="i"></app-simplex>
+</div>
+</div>
+<div>H0 = {{h0|json}}</div>
+<div>H1 = {{h1|json}}</div>
+<div>H2 = {{h2|json}}</div>
+<div>H3 = {{h3|json}}</div>
