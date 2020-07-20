@@ -69,8 +69,10 @@ export class AppComponent {
     // this.complex.mergeSimplices(3, 2, 3, 2, 3);
     // this.complex.mergeSimplices(3, 3, 4, 2, 3);
     // this.complex.mergeSimplices(3, 4, 0, 2, 3);
-    this.complex = getLens(3, 1);
-    for (let i = 0; i < 3; i++) {
+    const LENS_COUNT = 3
+    const SKIP_COUNT = 1
+    this.complex = getLens(LENS_COUNT, SKIP_COUNT);
+    for (let i = 0; i < LENS_COUNT; i++) {
       this.complex.setSimplexName(3, i, `V${i + 1}`);
       this.complex.setSimplexName(
         2,
@@ -81,6 +83,12 @@ export class AppComponent {
         2,
         this.complex.getFace(3, i, 2),
         `O${i + 1}`
+      );
+
+      this.complex.setSimplexName(
+        1,
+        this.complex.getFace(2, this.complex.getFace(3, i, 1), 1),
+        `a${i + 1}`
       );
     }
     this.complex.setSimplexName(0, this.complex.getVertex(3, 0, 0), "O");
@@ -95,21 +103,10 @@ export class AppComponent {
       this.complex.getFace(2, this.complex.getFace(3, 0, 3), 2),
       "o"
     );
-    this.complex.setSimplexName(
-      1,
-      this.complex.getFace(2, this.complex.getFace(3, 0, 1), 1),
-      "a1"
-    );
-    this.complex.setSimplexName(
-      1,
-      this.complex.getFace(2, this.complex.getFace(3, 1, 1), 1),
-      "a2"
-    );
-    this.complex.setSimplexName(
-      1,
-      this.complex.getFace(2, this.complex.getFace(3, 2, 1), 1),
-      "a3"
-    );
+    this.complex = new DeltaComplex();
+    this.complex.addSimplex(2, 'U');
+    this.complex.addSimplex(2, 'L');
+    this.complex.mergeSimplices(2, 0, 1);
     this.h0 = this.complex.getHomology(0);
     this.h1 = this.complex.getHomology(1);
     this.h2 = this.complex.getHomology(2);
