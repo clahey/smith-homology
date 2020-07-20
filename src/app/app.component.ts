@@ -22,7 +22,6 @@ export class AppComponent {
   h3;
   indices: number[];
 
-
   constructor() {
     // this.matrix = new Matrix([[0, 25], [10, 0]]);
     // this.d0 = new Matrix([[1], [1]]);
@@ -77,12 +76,14 @@ export class AppComponent {
     // this.complex.mergeSimplices(2, 0, 1, 1, 1)
     // this.complex.mergeSimplices(2, 0, 1, 0, 2)
     // this.complex.mergeSimplices(2, 0, 1, 2, 0)
-    this.complex.setSimplexName(3, 0, "V1");
-    this.complex.setSimplexName(3, 1, "V2");
-    this.complex.setSimplexName(3, 2, "V3");
-    this.complex.setSimplexName(2, this.complex.getFace(3, 0, 0), "I1");
-    this.complex.setSimplexName(2, this.complex.getFace(3, 1, 0), "I2");
-    this.complex.setSimplexName(2, this.complex.getFace(3, 2, 0), "I3");
+    for (let i = 0; i < 3; i++) {
+      this.complex.setSimplexName(3, i, `V${i + 1}`);
+      this.complex.setSimplexName(
+        2,
+        this.complex.getFace(3, i, 0),
+        `I${i + 1}`
+      );
+    }
     this.complex.setSimplexName(2, this.complex.getFace(3, 0, 2), "O1");
     this.complex.setSimplexName(2, this.complex.getFace(3, 1, 2), "O2");
     this.complex.setSimplexName(2, this.complex.getFace(3, 2, 2), "O3");

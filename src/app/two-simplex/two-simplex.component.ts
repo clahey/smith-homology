@@ -21,7 +21,6 @@ export class TwoSimplexComponent implements OnInit {
     this.name =
       this.complex.getSimplexName(this.dimension, this.index) ||
       `(${this.index})`;
-    console.log(this.name);
     this.faces = this.range(this.dimension + 1)
       .map(face => this.complex.getFace(this.dimension, this.index, face))
       .map(

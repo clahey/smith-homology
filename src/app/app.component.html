@@ -2,9 +2,8 @@
 <app-matrix [matrix]="d1"></app-matrix>
 <app-matrix [matrix]="d2"></app-matrix>
 <app-matrix [matrix]="d3"></app-matrix> -->
-{{indices|json}}
-<div *ngFor="let dim of range(4)">
-<div *ngFor="let i of range(complex.simplexCount(dim))">
+<div *ngFor="let dim of range(complex.dimension + 1)">
+<div class="simplex" *ngFor="let i of range(complex.simplexCount(dim))">
   <app-simplex [complex]="complex" [dimension]="dim" [index]="i"></app-simplex>
 </div>
 </div>
