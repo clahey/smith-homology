@@ -31,7 +31,7 @@ export class SimplexComponent implements OnChanges {
       .map(vertex => this.complex.getVertex(this.dimension, this.index, vertex))
       .map(
         vertex =>
-          this.complex.getSimplexName(this.dimension - 1, vertex) ||
+          this.complex.getSimplexName(0, vertex) ||
           `(${vertex})`
       );
   }
