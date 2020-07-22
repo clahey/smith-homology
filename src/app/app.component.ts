@@ -16,6 +16,7 @@ export class AppComponent {
   d1: Matrix;
   d0: Matrix;
   complex: DeltaComplex;
+  h = [];
   h0;
   h1;
   h2;
@@ -69,7 +70,7 @@ export class AppComponent {
     // this.complex.mergeSimplices(3, 2, 3, 2, 3);
     // this.complex.mergeSimplices(3, 3, 4, 2, 3);
     // this.complex.mergeSimplices(3, 4, 0, 2, 3);
-    const LENS_COUNT = 3
+    const LENS_COUNT = 5
     const SKIP_COUNT = 1
     this.complex = getLens(LENS_COUNT, SKIP_COUNT);
     for (let i = 0; i < LENS_COUNT; i++) {
@@ -103,15 +104,33 @@ export class AppComponent {
       this.complex.getFace(2, this.complex.getFace(3, 0, 3), 2),
       "o"
     );
+    this.complex.addLens(5,1);
     // this.complex = new DeltaComplex();
-    // this.complex.addSimplex(2, 'U');
-    // this.complex.addSimplex(2, 'L');
-    // this.complex.mergeSimplices(2, 0, 1, 0, 1);
-    // this.complex.mergeSimplices(2, 0, 1, 1, 0);
-    // this.complex.mergeSimplices(2, 0, 1, 2, 2);
-    // this.complex.setSimplexName(1, this.complex.getFace(2, 0, 0), 'c');
-    // this.complex.setSimplexName(1, this.complex.getFace(2, 0, 1), 'a');
-    // this.complex.setSimplexName(1, this.complex.getFace(2, 0, 2), 'b');
+    // this.complex.addSingularity(5);
+    this.complex = new DeltaComplex();
+    this.complex.addSimplex(2, 'U');
+    this.complex.addSimplex(2, 'L');
+    this.complex.mergeSimplices(2, 0, 1, 0, 1);
+    this.complex.mergeSimplices(2, 0, 1, 1, 0);
+    this.complex.mergeSimplices(2, 0, 1, 2, 2);
+    this.complex.setSimplexName(1, this.complex.getFace(2, 0, 0), 'c');
+    this.complex.setSimplexName(1, this.complex.getFace(2, 0, 1), 'a');
+    this.complex.setSimplexName(1, this.complex.getFace(2, 0, 2), 'b');
+
+    this.complex = new DeltaComplex();
+    this.complex.addSimplex(2, 'U');
+    this.complex.addSimplex(2, 'L');
+    this.complex.mergeSimplices(2, 2, 3, 0, 1);
+    this.complex.mergeSimplices(2, 2, 3, 1, 0);
+    this.complex.mergeSimplices(2, 2, 3, 2, 2);
+    this.complex.setSimplexName(1, this.complex.getFace(2, 2, 0), 'c\'');
+    this.complex.setSimplexName(1, this.complex.getFace(2, 2, 1), 'a\'');
+    this.complex.setSimplexName(1, this.complex.getFace(2, 2, 2), 'b\'');
+
+
+    for (let i = 0; i < this.complex.dimension + 1; i++) {
+      this.h[i] = this.complex.getHomology(i);
+    }
     this.h0 = this.complex.getHomology(0);
     this.h1 = this.complex.getHomology(1);
     this.h2 = this.complex.getHomology(2);

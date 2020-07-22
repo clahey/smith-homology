@@ -249,4 +249,25 @@ export class DeltaComplex {
       this.mergeSimplices(dim, o, o, i, i + 1);
     }
   }
+
+  addSphere(dim: number = 2) {
+    const o = this.simplexCount(dim);
+    this.addSimplex(dim);
+    this.addSimplex(dim);
+    for (let i = 0; i < dim; i++) {
+      this.mergeSimplices(dim, o, o + 1, i, i);
+    }
+  }
+
+  addMinimalSphere(dim: number = 2) {
+    if (dim % 2 == 1) {
+      const o = this.simplexCount(dim);
+      this.addSimplex(dim);
+      for (let i = 0; i < dim; i += 2) {
+        this.mergeSimplices(dim, o, o, i, i + 1);
+      }
+    } else {
+      this.addSphere(dim);
+    }
+  }
 }

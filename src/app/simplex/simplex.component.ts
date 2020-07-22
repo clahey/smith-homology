@@ -19,12 +19,12 @@ export class SimplexComponent implements OnChanges {
   ngOnChanges() {
     this.name =
       this.complex.getSimplexName(this.dimension, this.index) ||
-      `(${this.index})`;
+      `(${this.dimension},${this.index})`;
     this.faces = this.range(this.dimension + 1)
       .map(face => this.complex.getFace(this.dimension, this.index, face))
       .map(
         face =>
-          this.complex.getSimplexName(this.dimension - 1, face) || `(${face})`
+          this.complex.getSimplexName(this.dimension - 1, face) || `(${this.dimension - 1}, ${face})`
       );
     this.vertices = this.range(this.dimension + 1)
       .map(vertex => this.complex.getVertex(this.dimension, this.index, vertex))
