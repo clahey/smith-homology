@@ -118,8 +118,8 @@ export class AppComponent {
     this.complex.setSimplexName(1, this.complex.getFace(2, 0, 2), 'b');
 
     this.complex = new DeltaComplex();
-    this.complex.addSimplex(2, 'U');
-    this.complex.addSimplex(2, 'L');
+    this.complex.addSimplex(2, 'U\'');
+    this.complex.addSimplex(2, 'L\'');
     this.complex.mergeSimplices(2, 2, 3, 0, 1);
     this.complex.mergeSimplices(2, 2, 3, 1, 0);
     this.complex.mergeSimplices(2, 2, 3, 2, 2);
