@@ -3,4 +3,4 @@
 	<div class="text-simplex" *ngSwitchCase="1">{{vertices[0]}} ----{{name}}---> {{vertices[1]}}</div>
   <app-two-simplex *ngSwitchCase="2" [complex]="complex" [index]="index"></app-two-simplex>
   <div class="text-simplex" *ngSwitchDefault="">{{name}}<span *ngFor="let i of range(dimension + 1)">({{i}} -> {{faces[i]}})</span></div>
-</ng-container> 
+</ng-container>
