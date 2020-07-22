@@ -117,7 +117,6 @@ export class AppComponent {
     this.complex.setSimplexName(1, this.complex.getFace(2, 0, 1), 'a');
     this.complex.setSimplexName(1, this.complex.getFace(2, 0, 2), 'b');
 
-    this.complex = new DeltaComplex();
     this.complex.addSimplex(2, 'U\'');
     this.complex.addSimplex(2, 'L\'');
     this.complex.mergeSimplices(2, 2, 3, 0, 1);
@@ -126,7 +125,6 @@ export class AppComponent {
     this.complex.setSimplexName(1, this.complex.getFace(2, 2, 0), 'c\'');
     this.complex.setSimplexName(1, this.complex.getFace(2, 2, 1), 'a\'');
     this.complex.setSimplexName(1, this.complex.getFace(2, 2, 2), 'b\'');
-
 
     for (let i = 0; i < this.complex.dimension + 1; i++) {
       this.h[i] = this.complex.getHomology(i);

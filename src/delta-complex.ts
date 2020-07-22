@@ -13,7 +13,7 @@ function set1To0(n: number, j: number) {
   for (let i = 31; i >= 0; i--) {
     const mask = 1 << i;
     if (mask & n) {
-      if (j == 0) {
+      if (j == 0) { 
         return n & ~mask;
       } else {
         j--;
@@ -254,7 +254,7 @@ export class DeltaComplex {
     const o = this.simplexCount(dim);
     this.addSimplex(dim);
     this.addSimplex(dim);
-    for (let i = 0; i < dim; i++) {
+    for (let i = 0; i < dim + 1; i++) {
       this.mergeSimplices(dim, o, o + 1, i, i);
     }
   }
