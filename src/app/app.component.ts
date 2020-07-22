@@ -1,6 +1,6 @@
 import { Component, VERSION } from "@angular/core";
 import { Matrix } from "../matrix";
-import { DeltaComplex, getLens } from "../delta-complex";
+import { DeltaComplex, getLens, getBinary } from "../delta-complex";
 
 @Component({
   selector: "my-app",
@@ -103,10 +103,15 @@ export class AppComponent {
       this.complex.getFace(2, this.complex.getFace(3, 0, 3), 2),
       "o"
     );
-    this.complex = new DeltaComplex();
-    this.complex.addSimplex(2, 'U');
-    this.complex.addSimplex(2, 'L');
-    this.complex.mergeSimplices(2, 0, 1);
+    // this.complex = new DeltaComplex();
+    // this.complex.addSimplex(2, 'U');
+    // this.complex.addSimplex(2, 'L');
+    // this.complex.mergeSimplices(2, 0, 1, 0, 1);
+    // this.complex.mergeSimplices(2, 0, 1, 1, 0);
+    // this.complex.mergeSimplices(2, 0, 1, 2, 2);
+    // this.complex.setSimplexName(1, this.complex.getFace(2, 0, 0), 'c');
+    // this.complex.setSimplexName(1, this.complex.getFace(2, 0, 1), 'a');
+    // this.complex.setSimplexName(1, this.complex.getFace(2, 0, 2), 'b');
     this.h0 = this.complex.getHomology(0);
     this.h1 = this.complex.getHomology(1);
     this.h2 = this.complex.getHomology(2);

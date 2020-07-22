@@ -1,1 +1,7 @@
-.face { display: inline-block;}
+.text-simplex {
+  margin: 3px;
+  padding: 2px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}

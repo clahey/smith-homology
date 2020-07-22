@@ -25,14 +25,14 @@ function set1To0(n: number, j: number) {
 
 export function getLens(n: number, k: number = 1) {
   const lens = new DeltaComplex();
-  for (let i = 0; i < n; i++) {
-    lens.addSimplex(3);
-  }
-  for (let i = 0; i < n; i++) {
-    lens.mergeSimplices(3, i, (i + k) % n, 0, 1);
-    lens.mergeSimplices(3, i, (i + 1) % n, 2, 3);
-  }
+  lens.addLens(n, k);
   return lens;
+}
+
+export function getBinary(n: number) {
+  const binary = new DeltaComplex();
+  binary.addBinary(n);
+  return binary;
 }
 
 export class DeltaComplex {
@@ -168,6 +168,7 @@ export class DeltaComplex {
     if (dim > this.dimension) {
       this.dimension = dim;
     }
+    this.setSimplexName(dim, this.simplexCount(dim) - 1, name);
   }
 
   mergeSimplices(
@@ -216,5 +217,36 @@ export class DeltaComplex {
     );
     const dimension = this.dimension;
     return { simplexCount, boundaryMap, dimension };
+  }
+
+  addLens(n: number, k: number = 1) {
+    const o = this.simplexCount(3);
+    for (let i = 0; i < n; i++) {
+      this.addSimplex(3);
+    }
+    for (let i = 0; i < n; i++) {
+      this.mergeSimplices(3, i + o, ((i + k) % n) + o, 0, 1);
+      this.mergeSimplices(3, i + o, ((i + 1) % n) + o, 2, 3);
+    }
+  }
+
+  addBinary(n: number) {
+    const o = this.simplexCount(2);
+    this.addSimplex(2);
+    this.mergeSimplices(2, o, o, 0, 1);
+    this.mergeSimplices(2, o, o, 0, 2);
+    for (let i = 0; i < n; i++) {
+      this.addSimplex(2);
+      this.mergeSimplices(2, o + i, o + i + 1, 0, 1);
+      this.mergeSimplices(2, o + i + 1, o + i + 1, 0, 2);
+    }
+  }
+
+  addSingularity(dim: number) {
+    const o = this.simplexCount(dim);
+    this.addSimplex(dim);
+    for (let i = 0; i < dim; i++) {
+      this.mergeSimplices(dim, o, o, i, i + 1);
+    }
   }
 }

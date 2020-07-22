@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="dimension">
-	<div *ngSwitchCase="0">* {{name}}</div>
-	<div *ngSwitchCase="1">{{vertices[0]}} ----{{name}}---> {{vertices[1]}}</div>
+	<div class="text-simplex" *ngSwitchCase="0">* {{name}}</div>
+	<div class="text-simplex" *ngSwitchCase="1">{{vertices[0]}} ----{{name}}---> {{vertices[1]}}</div>
   <app-two-simplex *ngSwitchCase="2" [complex]="complex" [index]="index"></app-two-simplex>
-  <div *ngSwitchDefault="">{{name}}<span *ngFor="let i of range(dimension + 1)">({{i}} -> {{faces[i]}})</span></div>
+  <div class="text-simplex" *ngSwitchDefault="">{{name}}<span *ngFor="let i of range(dimension + 1)">({{i}} -> {{faces[i]}})</span></div>
 </ng-container> 
